@@ -62,7 +62,7 @@ git_branch() {
 	if [ ! -z "${branch:-}" ]; then
 		
 		if [ "$color_prompt" = yes ]; then			
- 			branch=" on \[\033[01;33m\]${branch}\[\033[00m\]"
+ 			branch="\[\033[00m\] on \[\033[01;33m\]${branch}\[\033[00m\]"
 		else
 			branch=" on ${branch}"
 		fi
@@ -71,7 +71,7 @@ git_branch() {
 }
 
 if [ "$color_prompt" = yes ]; then
-    PS1="${debian_chroot:+($debian_chroot)}\[\033[01;36m\]\u@\h\[\033[00m\]:\[\033[01;37m\]\w\[\033[00m\] $(git_branch) \$ "
+    PS1="${debian_chroot:+($debian_chroot)}\[\033[01;36m\]\u@\h\[\033[00m\]:\[\033[01;37m\]\w\[\033[00m\]$(git_branch) \$ "
 else
     PS1="${debian_chroot:+($debian_chroot)}\u@\h:\w \$(git_branch) \$ "
 fi
